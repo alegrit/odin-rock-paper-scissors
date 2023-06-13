@@ -34,7 +34,7 @@ function playRound(playerSelection, computerSelection) {
     return `🏳️ You lose!\n Scissors beat Paper\n\nCurrent Score:\n😀 ${currentPlayerScore} : ${currentComputerScore} 💻`;
   } else if (playerSelection === computerSelection)
     return `🤝 Computer chose ${computerSelection}.\n Well... same as you, it's a tie\n\nCurrent Score:\n😀 ${currentPlayerScore} : ${currentComputerScore} 💻`;
-  else if (playerSelection === "exit") {
+  else if (playerSelection === "exit" || playerSelection === '') {
     endGameFlag = true;
     alert(`Goodbye 👋`);
   } else
@@ -47,11 +47,11 @@ function game() {
   );
   while (true) {
     let playerSelection = prompt(
-      'Please enter your choice (scissors || rock || paper)\n\n To leave game type: "exit"'
+      'Please enter your choice (scissors || rock || paper)\n\n To leave game type "exit" or just "Cancel" 😅'
     );
 
     let gameResult = playRound(playerSelection, getComputerChoice());
-    if (endGameFlag === true) break;
+    if (endGameFlag === true || gameResult === '') break;
 
     alert(gameResult);
     if (currentPlayerScore === 3) {
